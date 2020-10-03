@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         final MovieAdapter movieAdapter = new MovieAdapter(this, movies);
         // Set adapter on the recycler view
         rvMovies.setAdapter(movieAdapter);
-        // Set a LayoutManager on the resycler view
+        // Set a LayoutManager on the recycler view
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -49,10 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObject = json.jsonObject;
                 try {
                     JSONArray results = jsonObject.getJSONArray("results");
-                    Log.i(TAG, "Reults: " + results.toString());
                     movies.addAll(Movie.fromJsonArray(results));
                     movieAdapter.notifyDataSetChanged();
-                    Log.i(TAG, "Movies: " + movies.toString());
                 } catch (JSONException e) {
                     Log.e(TAG, "Hit JSON exception");
                     e.printStackTrace();
